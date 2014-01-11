@@ -1,10 +1,12 @@
 TEMPLATE = app
 TARGET = cameracapture
 
-QT += multimediawidgets core gui widgets
+QMAKE_LFLAGS += -L/usr/lib/arm-linux-gnueabihf/
+
+QT += multimedia multimediawidgets core gui widgets
 
 CONFIG += mobility
-MOBILITY = multimedia
+MOBILITY += multimedia
 
 HEADERS = cameracapture.h \
           camera-capture-settings.h \
@@ -17,4 +19,9 @@ SOURCES = main.cpp \
 FORMS += cameracapture.ui \
          settings.ui \
     
+
+OTHER_FILES += \
+    deploy.sh \
+    camtest.desktop \
+    run.sh
 

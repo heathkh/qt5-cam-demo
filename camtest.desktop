@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Terminal=false
+Exec=/home/phablet/dev_tmp/heathkh-qt5-cam-demo/cameracapture
+Name=CameraCaptureTest
+GenericName=CameraCaptureTest
+Comment=Test of camera capture
+Icon=ubuntu-qmlrunner

@@ -72,7 +72,7 @@ void CameraCapture::setCamera(const QByteArray &cameraDevice)
     mediaRecorder = new QMediaRecorder(camera);
     connect(mediaRecorder, SIGNAL(stateChanged(QMediaRecorder::State)), this, SLOT(updateRecorderState(QMediaRecorder::State)));
 
-    //service = camera->service();
+    service = camera->service();
 
     //audio devices
     ui->actionAudio->menu()->clear();
@@ -95,6 +95,7 @@ void CameraCapture::setCamera(const QByteArray &cameraDevice)
         */
     } else {
         qWarning() << "Camera service is not available";
+        exit(0);
 
     }
 
@@ -119,8 +120,8 @@ void CameraCapture::setCamera(const QByteArray &cameraDevice)
     updateCameraState(camera->state());
     updateRecorderState(mediaRecorder->state());
 
-    connect(camera, SIGNAL(readyForCaptureChanged(bool)), ui->imageCaptureBox, SLOT(setEnabled(bool)));
-    connect(camera, SIGNAL(imageCaptured(QString,QImage)), this, SLOT(processCapturedImage(QString,QImage)));
+    connect(camera, SIGNAL(availabilityChanged (bool)), ui->imageCaptureBox, SLOT(setEnabled(bool)));
+    //connect(camera, SIGNAL(imageCaptured(QString,QImage)), this, SLOT(processCapturedImage(QString,QImage)));
 
 }
 
@@ -130,11 +131,7 @@ void CameraCapture::updateRecordTime()
     ui->statusbar->showMessage(str);
 }
 
-void CameraCapture::processCapturedImage(const QString& fname, const QImage& img)
-{
-    ui->lastImagePreviewLabel->setPixmap( QPixmap::fromImage(img.scaledToWidth(128)) );
-    qDebug() << "image captured:" << fname;
-}
+
 
 void CameraCapture::settings()
 {

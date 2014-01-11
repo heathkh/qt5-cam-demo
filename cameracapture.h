@@ -43,7 +43,7 @@ private slots:
 
    void updateRecordTime();
 
-   void processCapturedImage(const QString& fname, const QImage& img);
+   //void processCapturedImage(const QString& fname, const QImage& img);
 
 private:
    Ui::CameraCapture *ui;
