@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = cameracapture
+TARGET = qt5-cam-demo
 
 QMAKE_LFLAGS += -L/usr/lib/arm-linux-gnueabihf/
 
